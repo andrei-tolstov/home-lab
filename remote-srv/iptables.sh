@@ -5,12 +5,10 @@
 #посмотрим что сохранилось
 #cat /etc/iptables/rules.v4
 
-#!/bin/bash
-
-IPT="iptables"
+IPT=iptables
 ## Внешний интерфейс
 WAN=eth0
-WAN_IP=38.180.212.239
+WAN_IP=192.168.50.101
 
 
 ## Блокируем весь трафик, который не соответствует ни одному из правил
@@ -41,6 +39,3 @@ $IPT -A INPUT -p tcp ! --syn -m state --state NEW -j DROP
 $IPT -A INPUT -i $WAN -p tcp --dport 22 -j ACCEPT
 $IPT -A INPUT -i $WAN -p tcp --dport 80 -j ACCEPT
 $IPT -A INPUT -i $WAN -p tcp --dport 43492 -j ACCEPT
-
-
-
