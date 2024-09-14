@@ -1,0 +1,24 @@
+services:
+  amnezia-awg:
+    build: ./build
+    restart: always
+    volumes:
+      - /lib/modules:/lib/modules
+    ports:
+      - 43492:43492/udp
+    hostname: "32804d087d57"
+    container_name: 'amnezia-awg'
+    mac_address: '02:42:ac:11:00:02'
+    privileged: true
+    networks:
+      - amnezia
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    logging:
+      driver: none
+    runtime: runc
+
+networks:
+  amnezia:
+    driver: bridge

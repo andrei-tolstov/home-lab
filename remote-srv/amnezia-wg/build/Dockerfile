@@ -8,6 +8,7 @@ RUN apk --update upgrade --no-cache
 
 RUN mkdir -p /opt/amnezia
 RUN echo -e "#!/bin/bash\ntail -f /dev/null" > /opt/amnezia/start.sh
+COPY start.sh /opt/amnezia/start.sh
 RUN chmod a+x /opt/amnezia/start.sh
 COPY wg0.conf /opt/amnezia/awg/wg0.conf
 
